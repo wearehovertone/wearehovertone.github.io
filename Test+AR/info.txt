@@ -1,0 +1,17 @@
+Base
+https://github.com/AR-js-org/AR.js
+
+Version Web + focus Marker
+https://ar-js-org.github.io/AR.js-Docs/marker-based/
+https://medium.com/chialab-open-source/ar-js-the-simpliest-way-to-get-cross-browser-ar-on-the-web-8f670dd45462
+
++ Infos Marker https://github.com/Carnaux/NFT-Marker-Creator/wiki/Creating-good-markers
+
+
+petit plus (on sait jamais)
+https://medium.com/chialab-open-source/build-your-location-based-augmented-reality-web-app-c2442e716564
+
+Lien Nico
+- https://medium.com/arjs/augmented-reality-in-10-lines-of-html-4e193ea9fdbf
+- http://p5xr.org/#/README (AR pas au top)
+- https://github.com/orgicus/p5.js-cv (A explorer)
