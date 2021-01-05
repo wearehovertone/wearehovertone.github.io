@@ -7,6 +7,7 @@ https://medium.com/chialab-open-source/ar-js-the-simpliest-way-to-get-cross-brow
 
 + Infos Marker https://github.com/Carnaux/NFT-Marker-Creator/wiki/Creating-good-markers
 
+https://github.com/artoolkitx/jsartoolkit5
 
 petit plus (on sait jamais)
 https://medium.com/chialab-open-source/build-your-location-based-augmented-reality-web-app-c2442e716564
