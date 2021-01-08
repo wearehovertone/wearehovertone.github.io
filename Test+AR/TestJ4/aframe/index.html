@@ -1,7 +1,7 @@
 <script src="https://cdn.jsdelivr.net/gh/aframevr/aframe@1c2407b26c61958baa93967b5412487cd94b290b/dist/aframe-master.min.js"></script>
 
 <script src='https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js'></script>
-<!-- <script>
+<script>
     window.onload = function() {
         AFRAME.registerComponent('videohandler', {
             init: function () {
@@ -20,7 +20,7 @@
             }
         });
     };
-</script> -->
+</script>
 
 <style>
     .arjs-loader {
@@ -55,7 +55,7 @@
         <a-assets>
             <video 
 		   src="https://www.w3schools.com/html/mov_bbb.mp4"
-		   preload="auto" 
+		   preload="true" 
 		   id="vid" 
 		   response-type="arraybuffer" 
 		   loop
@@ -64,6 +64,7 @@
         </a-assets>
 
         <a-nft
+	       debug=true
 	       videohandler 
 	       type='nft' 
 	       url='https://wearehovertone.github.io/Test+AR/TestJ4/aframe/modeleNFT/Dessin_Borne'
