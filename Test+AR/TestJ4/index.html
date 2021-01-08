@@ -97,10 +97,10 @@ function initialize()
 
 	// create atToolkitContext
 	arToolkitContext = new THREEx.ArToolkitContext({
-		debug: false,
+		debug: true,
 		cameraParametersUrl: 'data/camera_para.dat',
-		detectionMode: 'mono'
-		//imageSmoothingEnabled : true
+		detectionMode: 'mono',
+		imageSmoothingEnabled : false
 	});
 	
 	// copy projection matrix to camera when initialization complete
