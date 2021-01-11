@@ -126,7 +126,12 @@ function initialize()
 	texture.minFilter = THREE.LinearFilter;
 	texture.magFilter = THREE.LinearFilter;
 	texture.format = THREE.RGBFormat;
-	let material1 = new THREE.MeshBasicMaterial( { map: texture } );
+	//let material1 = new THREE.MeshBasicMaterial( { map: texture } ); 
+	//let material1 = new THREE.MeshLambertMaterial();
+	let material1 = new THREE.MeshBasicMaterial({
+		     		opacity: 0.5
+   	});
+	material1.color.set(0xff0000);
 	
 	mesh1 = new THREE.Mesh( geometry1, material1 );
 	mesh1.rotation.x = -Math.PI/2;
