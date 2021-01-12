@@ -87,7 +87,7 @@ function initialize()
 	/////////////////////////////////Gestion et récup des images////////////////////////////////////////////
 	for (var i = 0; i < nbre_image; i++)
 	{
-        	url_list[i].concat('ImageAnim/hovertone_1080p_', i,'.png');
+        	url_list[i] = 'ImageAnim/hovertone_1080p_' + i +'.png';
 	}
 	
 	preload.apply(null,url_list);
