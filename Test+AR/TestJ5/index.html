@@ -75,11 +75,24 @@ var markerRoot1;
 
 var mesh1;
 
+var images = [];
+var url_list = [];
+var nbre_image = 7;
+
 initialize();
 animate();
 
 function initialize()
 {
+	/////////////////////////////////Gestion et récup des images////////////////////////////////////////////
+	for (var i = 0; i < nbre_image; i++)
+	{
+        	url_list[i].concat('ImageAnim/hovertone_1080p_', i,'.png');
+	}
+	
+	preload.apply(null,url_list);
+	
+	/////////////////////////////////Debut AR///////////////////////////////////////
 	scene = new THREE.Scene();
 
 	let ambientLight = new THREE.AmbientLight( 0xcccccc, 0.5 );
@@ -161,7 +174,7 @@ function initialize()
 	// init controls for camera
         var markerControls = new THREEx.ArMarkerControls(arToolkitContext, camera, {
             type : 'nft',
-            descriptorsUrl : 'data/dataNFT/pinball',
+            descriptorsUrl : 'Marker/Dessin_Borne',
             changeMatrixMode: 'cameraTransformMatrix'
         })
 
@@ -218,7 +231,13 @@ function animate()
 	update();
 	render();
 }
-
+	
+function preload() {
+    for (var i = 0; i < arguments.length; i++) {
+        images[i] = new Image();
+        images[i].src = preload.arguments[i];
+    }
+}
 </script>
 
 </body>
