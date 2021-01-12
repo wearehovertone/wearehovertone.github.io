@@ -5,6 +5,7 @@
 	<title>Hello, world!</title>
 	<!-- include three.js library -->
 	<script src='js/three.js'></script>
+	<script src='js/ar-nft.js'></script>
 	<!-- include jsartookit -->
 	<script src="jsartoolkit5/artoolkit.min.js"></script>
 	<script src="jsartoolkit5/artoolkit.api.js"></script>
@@ -16,6 +17,48 @@
 </head>
 
 <body style='margin : 0px; overflow: hidden; font-family: Monospace;'>
+	
+<!-- Loader pour le chargement du modèle NFT -->
+<style>
+        .arjs-loader {
+            margin: 0 auto;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .arjs-loader-spinner {
+            z-index: 10;
+            -webkit-transform: spin 1s linear infinite;
+            animation: spin 1s linear infinite;
+            border: 3px solid #ddd;
+            border-top: 3px solid #42a5f5;
+            border-radius: 50%;
+            height: 75px;
+            width: 75px;
+        }
+
+        @-webkit-keyframes spin {
+            to {
+                border-top-color: #42a5f5;
+                -webkit-transform: rotate(360deg);
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes spin {
+            to {
+                border-top-color: #42a5f5;
+                -webkit-transform: rotate(360deg);
+                transform: rotate(360deg);
+            }
+        }
+    </style>
 		
 <!-- 
   Example created by Lee Stemkoski: https://github.com/stemkoski
@@ -48,9 +91,10 @@ function initialize()
 	renderer = new THREE.WebGLRenderer({
 		antialias : true,
 		alpha: true
+		precision: 'mediump', //from nft example
 	});
 	renderer.setClearColor(new THREE.Color('lightgrey'), 0)
-	renderer.setSize( 640, 480 );
+	renderer.setSize( 640, 480 );							
 	renderer.domElement.style.position = 'absolute'
 	renderer.domElement.style.top = '0px'
 	renderer.domElement.style.left = '0px'
@@ -87,13 +131,18 @@ function initialize()
 		onResize()
 	});
 	
+	// listener for end loading of NFT marker
+        window.addEventListener('arjs-nft-loaded', function(ev){
+          console.log(ev);
+        })
+	
 	////////////////////////////////////////////////////////////
 	// setup arToolkitContext
 	////////////////////////////////////////////////////////////	
 
 	// create atToolkitContext
 	arToolkitContext = new THREEx.ArToolkitContext({
-		debug: true,
+		debug: false,
 		cameraParametersUrl: 'data/camera_para.dat',
 		detectionMode: 'mono',
 		imageSmoothingEnabled : false
@@ -109,30 +158,41 @@ function initialize()
 	////////////////////////////////////////////////////////////
 
 	// build markerControls
-	markerRoot1 = new THREE.Group();
-	scene.add(markerRoot1);
-	let markerControls1 = new THREEx.ArMarkerControls(arToolkitContext, markerRoot1, {
-		type: 'pattern', patternUrl: "data/hiro.patt",
-	})
+	// init controls for camera
+        var markerControls = new THREEx.ArMarkerControls(arToolkitContext, camera, {
+            type : 'nft',
+            descriptorsUrl : 'data/dataNFT/pinball',
+            changeMatrixMode: 'cameraTransformMatrix'
+        })
 
-	let geometry1 = new THREE.PlaneBufferGeometry(markerControls1.width,1, 1,1);
+        scene.visible = false
 
-	let video = document.getElementById( 'video' );
-	let texture = new THREE.VideoTexture( video );
-	texture.minFilter = THREE.LinearFilter;
-	texture.magFilter = THREE.LinearFilter;
-	texture.format = THREE.RGBFormat;
-	//let material1 = new THREE.MeshBasicMaterial( { map: texture } ); 
-	//let material1 = new THREE.MeshLambertMaterial();
-	let material1 = new THREE.MeshBasicMaterial({
-		     		opacity: 0.3
-   	});
-	material1.color.set(0xff0000);
+        var root = new THREE.Object3D();
+        scene.add(root);
 	
-	mesh1 = new THREE.Mesh( geometry1, material1 );
-	mesh1.rotation.x = -Math.PI/2;
-	
-	markerRoot1.add( mesh1 );
+        //////////////////////////////////////////////////////////////////////////////////
+        //		add an object in the scene
+        //////////////////////////////////////////////////////////////////////////////////
+
+        var threeGLTFLoader = new THREE.GLTFLoader();
+        var model;
+
+        threeGLTFLoader.load("./resources/Flamingo.glb", function (gltf) {
+            model = gltf.scene.children[0];
+            model.name = 'Flamingo';
+
+            var animation = gltf.animations[0];
+            var mixer = new THREE.AnimationMixer(model);
+            mixers.push(mixer);
+            var action = mixer.clipAction(animation);
+            action.play();
+
+            root.matrixAutoUpdate = false;
+            root.add(model);
+
+            model.position.z = -200;
+            model.position.x = 100;
+            model.position.y = 100;
 }
 
 
