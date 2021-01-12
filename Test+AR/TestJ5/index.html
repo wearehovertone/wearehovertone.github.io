@@ -244,12 +244,6 @@ function initialize()
 }
 
 
-function render()
-{
-	renderer.render( scene, camera );
-}
-
-
 function animate()
 {
 	requestAnimationFrame(animate);
@@ -264,6 +258,12 @@ function preload() {
         images[i] = new Image();
         images[i].src = preload.arguments[i];
     }
+}
+	
+	
+function render()
+{
+	renderer.render( scene, camera );
 }
 </script>
 
