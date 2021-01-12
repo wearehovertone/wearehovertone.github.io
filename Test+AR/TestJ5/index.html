@@ -210,6 +210,8 @@ function initialize()
 	mesh1 = new THREE.Mesh( geometry1, material1 );
 	mesh1.rotation.x = -Math.PI/2;
 	root.add( mesh1 );
+	
+	render();
 	//////////////////////////////////////////////////////
 	
         /*var threeGLTFLoader = new THREE.GLTFLoader();
@@ -234,7 +236,7 @@ function initialize()
 }
 
 
-function update()
+/*function update()
 {
 	// update artoolkit on every frame
 	if ( arToolkitSource.ready !== false )
@@ -255,7 +257,7 @@ function animate()
 	totalTime += deltaTime;
 	update();
 	render();
-}
+}*/
 	
 function preload() {
     for (var i = 0; i < arguments.length; i++) {
