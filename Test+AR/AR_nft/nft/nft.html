@@ -32,6 +32,18 @@ html,body {
 <script src="../resources/jsartoolkit5/artoolkit/artoolkit.three.js"></script>
 
 <script>
+	
+var images = [];
+var url_list = [];
+var nbre_image = 7;
+	
+for (var i = 0; i < nbre_image; i++)
+{
+        url_list[i] = '../resources/ImageAnim/hovertone_1080p_' + i +'.png';
+}
+	
+preload.apply(null,url_list);
+	
 window.ARThreeOnLoad = function() {
 
 	ARController.getUserMediaThreeScene({maxARVideoSize: 320, cameraParam: '../resources/data/camera_para-iPhone 5 rear 640x480 1.0m.dat',
@@ -103,6 +115,13 @@ window.ARThreeOnLoad = function() {
 
 if (window.ARController && ARController.getUserMediaThreeScene) {
 	ARThreeOnLoad();
+}
+	
+function preload() {
+    for (var i = 0; i < arguments.length; i++) {
+        images[i] = new Image();
+        images[i].src = preload.arguments[i];
+    }
 }
 </script>
 
