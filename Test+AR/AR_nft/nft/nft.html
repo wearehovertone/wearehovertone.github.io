@@ -119,7 +119,7 @@ function preload() {
     for (var i = 0; i < arguments.length; i++) {
         //images[i] = new Image();
         //images[i].src = preload.arguments[i];
-	materials[i] = new THREE.MeshBasicMaterial({map: loader.load(arguments[i])}),;
+	materials[i] = new THREE.MeshBasicMaterial({map: loader.load(arguments[i])});
     }
 }
 </script>
