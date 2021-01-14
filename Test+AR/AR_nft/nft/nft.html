@@ -96,9 +96,9 @@ window.ARThreeOnLoad = function() {
 
 		var tick = function() {
 			arScene.process();
-			rotationV += (rotationTarget - plane.rotation.z) * 0.05;
-			plane.rotation.z += rotationV;
-			rotationV *= 0.8;
+			//rotationV += (rotationTarget - plane.rotation.z) * 0.05;
+			//plane.rotation.z += rotationV;
+			//rotationV *= 0.8;
 
 			arScene.renderOn(renderer);
 			requestAnimationFrame(tick);
