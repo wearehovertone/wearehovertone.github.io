@@ -76,21 +76,35 @@ window.ARThreeOnLoad = function() {
 		/*var sphere = new THREE.Mesh(
 			new THREE.SphereGeometry(0.5, 8, 8),
 			new THREE.MeshNormalMaterial()
-		);
+		);*/
 
-		sphere.material.flatShading;
+		/*nst geometry = new THREE.PlaneBufferGeometry( 1, 2, 4, 4 );
+		let texture = materials[0];
+		texture.minFilter = THREE.LinearFilter;
+		texture.magFilter = THREE.LinearFilter;
+		const plane = new THREE.Mesh( geometry, material );
+		
+		//sphere.material.flatShading;
 		sphere.position.z = 40;
 		sphere.position.x = 80;
 		sphere.position.y = 80;
 		sphere.scale.set(80,80,80);*/
 		
-		const geometry = new THREE.PlaneBufferGeometry( 1, 1, 2, 2 );
-		var material = materials[0];
-		const plane = new THREE.Mesh( geometry, material );
-
+		
+			let geometry1= new THREE.PlaneBufferGeometry(2,2, 4,4);
+7
+			
+			let material1= new THREE.MeshBasicMaterial( { map: materials[]} );
+	
+			mesh1 = new THREE.Mesh( geometry1, material1 );
+			mesh1.rotation.x = -Math.PI/2;
+	
+			markerRoot1.add( mesh1 );
+		
+		
 		arController.loadNFTMarker('../resources/dataNFT/Dessin_Borne', function(markerId) {
 			var markerRoot = arController.createThreeNFTMarker(markerId);
-			markerRoot.add(plane);
+			markerRoot.add(mesh1);
 			arScene.scene.add(markerRoot);
 		});
 
@@ -120,7 +134,8 @@ function preload() {
     for (var i = 0; i < arguments.length; i++) {
         //images[i] = new Image();
         //images[i].src = preload.arguments[i];
-	materials[i] = new THREE.MeshBasicMaterial({map: loader.load(arguments[i])});
+	//materials[i] = new THREE.MeshBasicMaterial({map: loader.load(arguments[i])});
+	materials[i] = new THREE.TextureLoader().load( arguments[i] );
     }
 }
 </script>
