@@ -21,10 +21,11 @@
 		nftLoader.init("../../dataNFT/pinball", true);
 
 		var texture = new THREE.TextureLoader().load( '../../resources/data/ImageAnim/hovertone_1080p_0.png' );
-
+					
 		var mat = new THREE.MeshLambertMaterial({color: 0xbbbbff, map: texture});
 		var planeGeom = new THREE.PlaneGeometry(1,1,1,1);
 		var plane = new THREE.Mesh(planeGeom, mat);
+		plane.material.needsUpdate = true;
 		plane.position.z = 0;
 		plane.position.x = 90;
 		plane.position.y = 90;
