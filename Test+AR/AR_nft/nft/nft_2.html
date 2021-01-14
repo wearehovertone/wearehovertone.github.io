@@ -38,99 +38,102 @@ var url_list = [];
 var nbre_image = 7;
 window.addEventListener('artoolkit-loaded', () => {
 
- //Gestion des Image et preload des images
-  for (var i = 0; i < nbre_image; i++)
-  {
-          url_list[i] = '../resources/ImageAnim/hovertone_1080p_' + i +'.png';
-  }
-  preload.apply(null,url_list);
+	//Gestion des Image et preload des images
+  	for (var i = 0; i < nbre_image; i++)
+  	{
+  	        url_list[i] = '../resources/ImageAnim/hovertone_1080p_' + i +'.png';
+  	}
+  	preload.apply(null,url_list);
 	
-  window.ARThreeOnLoad = function() {
-
-	ARController.getUserMediaThreeScene({maxARVideoSize: 320, cameraParam: '../resources/data/camera_para-iPhone 5 rear 640x480 1.0m.dat',
-	onSuccess: function(arScene, arController, arCamera) {
-
-	document.body.className = arController.orientation;
-
-	var renderer = new THREE.WebGLRenderer({antialias: true});
-	//renderer.gammaOutput = true;
-	//renderer.gammaFactor = 2.2;
-	if (arController.orientation === 'portrait') 
+  	window.ARThreeOnLoad = function() 
 	{
-		var w = (window.innerWidth / arController.videoHeight) * arController.videoWidth;
-		var h = window.innerWidth;
-		renderer.setSize(w, h);
-		renderer.domElement.style.paddingBottom = (w-h) + 'px';
-	} else 
-	{
-		if (/Android|mobile|iPad|iPhone/i.test(navigator.userAgent)) 
+		ARController.getUserMediaThreeScene({maxARVideoSize: 320, cameraParam: '../resources/data/camera_para-iPhone 5 rear 640x480 1.0m.dat',
+		onSuccess: function(arScene, arController, arCamera) 
 		{
-			renderer.setSize(window.innerWidth, (window.innerWidth / arController.videoWidth) * arController.videoHeight);
-		} else 
-		{
-			renderer.setSize(arController.videoWidth, arController.videoHeight);
-			document.body.className += ' desktop';
-		}
-	}
 
-	document.body.insertBefore(renderer.domElement, document.body.firstChild);
-	var rotationV = 0;
-	var rotationTarget = 0;
+			document.body.className = arController.orientation;
 
-	renderer.domElement.addEventListener('click', function(ev) {
-		ev.preventDefault();
-		rotationTarget += 1;
-	}, false);
+			var renderer = new THREE.WebGLRenderer({antialias: true});
+			//renderer.gammaOutput = true;
+			//renderer.gammaFactor = 2.2;
+			if (arController.orientation === 'portrait') 
+			{
+				var w = (window.innerWidth / arController.videoHeight) * arController.videoWidth;
+				var h = window.innerWidth;
+				renderer.setSize(w, h);
+				renderer.domElement.style.paddingBottom = (w-h) + 'px';
+			} else 
+			{
+				if (/Android|mobile|iPad|iPhone/i.test(navigator.userAgent)) 
+				{
+					renderer.setSize(window.innerWidth, (window.innerWidth / arController.videoWidth) * arController.videoHeight);
+				} else 
+				{
+					renderer.setSize(arController.videoWidth, arController.videoHeight);
+					document.body.className += ' desktop';
+				}
+			}
 
-	var plane = new THREE.Mesh(
-		new THREE.PlaneGeometry(1,1, 4, 4),
-		new THREE.MeshNormalMaterial()
-	);
+			document.body.insertBefore(renderer.domElement, document.body.firstChild);
+			var rotationV = 0;
+			var rotationTarget = 0;
 
-	plane.material.flatShading;
-	plane.position.z = 40;
-	plane.position.x = 80; 
-	plane.position.y = 80;
-	plane.scale.set(80,80,80);
-		
-	arController.loadNFTMarker('../resources/dataNFT/Dessin_Borne', function(markerId) 
-	{
-		var markerRoot = arController.createThreeNFTMarker(markerId);
-		markerRoot.add(plane);
-		arScene.scene.add(markerRoot);
-	});
+			renderer.domElement.addEventListener('click', function(ev) {
+				ev.preventDefault();
+				rotationTarget += 1;
+			}, false);
 
-	var tick = function() 
-	{
-		arScene.process();
-		rotationV += (rotationTarget - plane.rotation.z) * 0.05;
-		plane.rotation.z += rotationV;
-		rotationV *= 0.8;
+			var plane = new THREE.Mesh(
+				new THREE.PlaneGeometry(1,1, 4, 4),
+				new THREE.MeshNormalMaterial()
+			);
 
-		arScene.renderOn(renderer);
-		requestAnimationFrame(tick);
+			plane.material.flatShading;
+			plane.position.z = 40;
+			plane.position.x = 80; 
+			plane.position.y = 80;
+			plane.scale.set(80,80,80);
+
+			arController.loadNFTMarker('../resources/dataNFT/Dessin_Borne', function(markerId) 
+			{
+				var markerRoot = arController.createThreeNFTMarker(markerId);
+				markerRoot.add(plane);
+				arScene.scene.add(markerRoot);
+			});
+
+			var tick = function() 
+			{
+				arScene.process();
+				rotationV += (rotationTarget - plane.rotation.z) * 0.05;
+				plane.rotation.z += rotationV;
+				rotationV *= 0.8;
+
+				arScene.renderOn(renderer);
+				requestAnimationFrame(tick);
+			};
+
+			tick();
+
+ 		}});
+
+ 		delete window.ARThreeOnLoad;
+
 	};
-		
-	tick();
 
- }});
-
- delete window.ARThreeOnLoad;
-
-};
-
-if (window.ARController && ARController.getUserMediaThreeScene) {
-	ARThreeOnLoad();
-}
+	if (window.ARController && ARController.getUserMediaThreeScene) 
+	{
+		ARThreeOnLoad();
+	}
 	
-function preload() {
-    for (var i = 0; i < arguments.length; i++) {
-        //images[i] = new Image();
-        //images[i].src = preload.arguments[i];
-	//materials[i] = new THREE.MeshBasicMaterial({map: loader.load(arguments[i])});
-	materials[i] = new THREE.TextureLoader().load( arguments[i] );
-    }
-}
+	function preload() 
+	{
+    		for (var i = 0; i < arguments.length; i++) {
+		//images[i] = new Image();
+		//images[i].src = preload.arguments[i];
+		//materials[i] = new THREE.MeshBasicMaterial({map: loader.load(arguments[i])});
+		materials[i] = new THREE.TextureLoader().load( arguments[i] );
+	}
+});
 </script>
 
 </body>
