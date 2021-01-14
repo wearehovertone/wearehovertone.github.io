@@ -114,26 +114,28 @@ window.addEventListener('artoolkit-loaded', () => {
 
 			tick();
 
- 		}});
+		}
+		
+	});
 
- 		delete window.ARThreeOnLoad;
+ 	delete window.ARThreeOnLoad;
 
-	};
+};
 
-	if (window.ARController && ARController.getUserMediaThreeScene) 
-	{
-		ARThreeOnLoad();
-	}
+if (window.ARController && ARController.getUserMediaThreeScene) 
+{
+	ARThreeOnLoad();
+}
 	
-	function preload() 
-	{
-    		for (var i = 0; i < arguments.length; i++) {
-		//images[i] = new Image();
-		//images[i].src = preload.arguments[i];
-		//materials[i] = new THREE.MeshBasicMaterial({map: loader.load(arguments[i])});
-		materials[i] = new THREE.TextureLoader().load( arguments[i] );
-	}
-});
+function preload() 
+{
+    	for (var i = 0; i < arguments.length; i++) {
+	//images[i] = new Image();
+	//images[i].src = preload.arguments[i];
+	//materials[i] = new THREE.MeshBasicMaterial({map: loader.load(arguments[i])});
+	materials[i] = new THREE.TextureLoader().load( arguments[i] );
+}
+
 </script>
 
 </body>
