@@ -74,7 +74,7 @@ window.ARThreeOnLoad = function() {
 		
 		var texture = new THREE.TextureLoader().load( '../../resources/data/textures/aframe-k.png' );
 
-		var mat = new THREE.MeshLambertMaterial({map: texture});
+		var mat = new THREE.MeshLambertMaterial({color: 0xbbbbff});
 		var planeGeom = new THREE.PlaneGeometry(1,1,1,1);
 		var plane = new THREE.Mesh(planeGeom, mat);
 		
