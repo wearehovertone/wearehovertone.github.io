@@ -21,12 +21,6 @@ html,body {
 </head>
 <body>
 
-<h1>NFT marker example with Three.js</h1>
-<p>On Chrome on Android, tap the screen to start playing video stream.</p>
-<p>Show  <a href="https://github.com/artoolkit/artoolkit5/blob/master/doc/Marker%20images/pinball.jpg">Pinball image</a> to camera to display a colorful object on top of it. Tap the screen to rotate the object.
-
-<p>&larr; <a href="../index.html">Back to examples</a></p>
-
 <script src="../resources/jsartoolkit5/standard/artoolkit.min.js"></script>
 <!-- <script src="../resources/three.js"></script> -->
 <script src="../resources/three.min.js"></script>
@@ -89,7 +83,7 @@ window.ARThreeOnLoad = function() {
 		plane.position.y = 90;
 		plane.scale.set(180,180,180);
 
-		arController.loadNFTMarker('../resources/dataNFT/pinball', function(markerId) {
+		arController.loadNFTMarker('../resources/dataNFT/Dessin_Borne', function(markerId) {
 			var markerRoot = arController.createThreeNFTMarker(markerId);
 			markerRoot.add(plane);
 			arScene.scene.add(markerRoot);
