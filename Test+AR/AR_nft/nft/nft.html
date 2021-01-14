@@ -21,19 +21,13 @@ html,body {
 </head>
 <body>
 
-<h1>NFT marker example with Three.js</h1>
-<p>On Chrome on Android, tap the screen to start playing video stream.</p>
-<p>Show  <a href="https://github.com/artoolkit/artoolkit5/blob/master/doc/Marker%20images/pinball.jpg">Pinball image</a> to camera to display a colorful object on top of it. Tap the screen to rotate the object.
-
-<p>&larr; <a href="../index.html">Back to examples</a></p>
-
 <script src="../resources/jsartoolkit5/standard/artoolkit.min.js"></script>
 <script src="../resources/three.js"></script>
 <script src="../resources/jsartoolkit5/artoolkit/artoolkit.three.js"></script>
 
 <script>
 	
-var images = [];
+const materials = [];
 var url_list = [];
 var nbre_image = 7;
 	
@@ -78,7 +72,7 @@ window.ARThreeOnLoad = function() {
 			rotationTarget += 1;
 		}, false);
 
-		var sphere = new THREE.Mesh(
+		/*var sphere = new THREE.Mesh(
 			new THREE.SphereGeometry(0.5, 8, 8),
 			new THREE.MeshNormalMaterial()
 		);
@@ -87,11 +81,15 @@ window.ARThreeOnLoad = function() {
 		sphere.position.z = 40;
 		sphere.position.x = 80;
 		sphere.position.y = 80;
-		sphere.scale.set(80,80,80);
+		sphere.scale.set(80,80,80);*/
+		
+		const geometry = new THREE.PlaneBufferGeometry( 1, 1, 2, 2 );
+		var material = materials[0];
+		const plane = new THREE.Mesh( geometry, material );
 
 		arController.loadNFTMarker('../resources/dataNFT/Dessin_Borne', function(markerId) {
 			var markerRoot = arController.createThreeNFTMarker(markerId);
-			markerRoot.add(sphere);
+			markerRoot.add(plane);
 			arScene.scene.add(markerRoot);
 		});
 
@@ -119,8 +117,9 @@ if (window.ARController && ARController.getUserMediaThreeScene) {
 	
 function preload() {
     for (var i = 0; i < arguments.length; i++) {
-        images[i] = new Image();
-        images[i].src = preload.arguments[i];
+        //images[i] = new Image();
+        //images[i].src = preload.arguments[i];
+	materials[i] = new THREE.MeshBasicMaterial({map: loader.load(arguments[i])}),;
     }
 }
 </script>
