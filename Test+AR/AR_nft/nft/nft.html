@@ -94,17 +94,17 @@ window.ARThreeOnLoad = function() {
 			arScene.scene.add(markerRoot);
 		});
 
-		/*var tick = function() {
+		var tick = function() {
 			arScene.process();
-			rotationV += (rotationTarget - sphere.rotation.z) * 0.05;
+			rotationV += (rotationTarget - plane.rotation.z) * 0.05;
 			sphere.rotation.z += rotationV;
 			rotationV *= 0.8;
 
 			arScene.renderOn(renderer);
 			requestAnimationFrame(tick);
-		};*/
-
-		//tick();
+		};
+		
+		tick();
 
 	}});
 
