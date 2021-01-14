@@ -97,7 +97,7 @@ window.ARThreeOnLoad = function() {
 		var tick = function() {
 			arScene.process();
 			rotationV += (rotationTarget - plane.rotation.z) * 0.05;
-			sphere.rotation.z += rotationV;
+			plane.rotation.z += rotationV;
 			rotationV *= 0.8;
 
 			arScene.renderOn(renderer);
@@ -108,7 +108,7 @@ window.ARThreeOnLoad = function() {
 
 	}});
 
-	//delete window.ARThreeOnLoad;
+	delete window.ARThreeOnLoad;
 
 };
 
