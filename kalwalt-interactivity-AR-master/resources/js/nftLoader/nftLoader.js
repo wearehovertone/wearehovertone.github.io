@@ -41,7 +41,7 @@
           video: true
         };
 
-       if (window.innerWidth < 800) {
+       /*if (window.innerWidth < 800) {
       hint = {
         audio: false,
         video: {
@@ -53,7 +53,7 @@
                 }
             },
       };
-    };
+    };*/
 
        navigator.mediaDevices.getUserMedia(hint).then(function(stream) {
           video.srcObject = stream;
