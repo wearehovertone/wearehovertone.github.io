@@ -38,7 +38,9 @@
       if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
         var hint = {
           audio: false,
-          video: true
+          video:  { 
+                    facingMode: { exact: "environment" }
+                  } 
         };
 
        /*if (window.innerWidth < 800) {
