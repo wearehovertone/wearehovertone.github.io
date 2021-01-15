@@ -3,6 +3,9 @@
 <title>NFT marker example with Three.js</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=0.5, maximum-scale=1">
 <link rel="stylesheet" type="text/css" href="../resources/css/nft-style.css">
+	<script src="../resources/three.min.js"></script>
+	<script src="../resources/js/libs/stats.min.js"></script>
+	<script src="../resources/build/nftLoader/nftLoader.min.js"></script>
 </head>
 <body>
     <a
@@ -11,9 +14,7 @@
         target="_blank">
         🖼 Marker Image
     </a>
-		<script src="../resources/three.min.js"></script>
-		<script src="../resources/js/libs/stats.min.js"></script>
-		<script src="../resources/build/nftLoader/nftLoader.min.js"></script>
+		
 		<script>
 
 		var nftLoader = new NFTLoader(640, 480, 'config.json');
