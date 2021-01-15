@@ -38,24 +38,22 @@
       if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
         var hint = {
           audio: false,
-          video:  { 
-                    facingMode: { exact: "environment" }
-                  } 
+          video: true
         };
 
-       /*if (window.innerWidth < 800) {
+       if (window.innerWidth < 800) {
       hint = {
         audio: false,
         video: {
-            width: { ideal: this.width },
-            height: { ideal: this.height },
+            //width: { ideal: this.width },
+            //height: { ideal: this.height },
             facingMode:
                 { exact:
                     "environment"
                 }
             },
       };
-    };*/
+    };
 
        navigator.mediaDevices.getUserMedia(hint).then(function(stream) {
           video.srcObject = stream;
