@@ -52,19 +52,20 @@
 
 			  let start = performance.now();
 			  requestAnimationFrame(function animate(time) {
-			    // timeFraction goes from 0 to 1
-			    let timeFraction = (time - start) / duration;
-			    if (timeFraction => 1) 
-			    {	
-				    timeFraction = 1;
-				    //Passage des images
-				    return new THREE.TextureLoader().load( url_list[temp] );
-				    plane.material.needsUpdate = true;
-				    temp++;
-				    if (temp > nbre_image ){
-					    temp = 0;
-				    }
-			    };
+				    // timeFraction goes from 0 to 1
+					let timeFraction = (time - start) / duration;
+					console.log(timeFraction);
+					if (timeFraction => 1) 
+					{	
+						timeFraction = 1;
+						//Passage des images
+						return new THREE.TextureLoader().load( url_list[temp] );
+						plane.material.needsUpdate = true;
+						temp++;
+						if (temp > nbre_image ){
+						temp = 0;
+					}
+				};
 			  })
 		};
 		</script>
