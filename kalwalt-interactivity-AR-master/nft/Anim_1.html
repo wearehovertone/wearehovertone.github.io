@@ -59,13 +59,13 @@
 					{	
 						timeFraction = 1;
 						//Passage des images
-						return new THREE.TextureLoader().load( url_list[temp] );
-						plane.material.needsUpdate = true;
+						
 						temp++;
 						if (temp > nbre_image ){
-						temp = 0;
-					}
-				};
+							temp = 0;	
+						}
+						return new THREE.TextureLoader().load( url_list[temp] );
+					};
 			  })
 		};
 		</script>
