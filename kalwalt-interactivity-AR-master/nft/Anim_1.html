@@ -23,9 +23,9 @@
 		
 		<script>
 		////////////////////////////////////////////	Gestion d'image		///////////////////////////////////////////
-		var url_list = [];
-		var nbre_image = 7;
-		var temp = 0;
+		const  url_list = [];
+		const nbre_image = 7;
+		const temp = 0;
 			for (var i = 0; i < nbre_image; i++)
 			{
 				url_list[i] = '../../resources/data/ImageAnim/hovertone_1080p_' + i +'.png';
@@ -35,7 +35,7 @@
 
 		nftLoader.init("../../dataNFT/Dessin_Borne", true);
 
-		var texture = new THREE.TextureLoader().load( '../../resources/data/ImageAnim/hovertone_1080p_0.png' );
+		var texture = animate(1000);
 					
 		var mat = new THREE.MeshLambertMaterial({color: 0xbbbbff, map: texture});
 		var planeGeom = new THREE.PlaneGeometry(1,1,1,1);
@@ -48,10 +48,9 @@
 
 		nftLoader.add(plane);
 
-		function animate({timing, duration}) {
+		function animate({duration}) {
 
 			  let start = performance.now();
-
 			  requestAnimationFrame(function animate(time) {
 			    // timeFraction goes from 0 to 1
 			    let timeFraction = (time - start) / duration;
@@ -59,7 +58,12 @@
 			    {	
 				    timeFraction = 1;
 				    //Passage des images
+				    return new THREE.TextureLoader().load( url_list[temp] );
 				    plane.material.needsUpdate = true;
+				    temp++;
+				    if (temp > nbre_image ){
+					    temp = 0;
+				    }
 			    };
 			  })
 		};
