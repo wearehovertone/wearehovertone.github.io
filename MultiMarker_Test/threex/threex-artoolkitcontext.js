@@ -11,7 +11,7 @@ ARjs.Context = THREEx.ArToolkitContext = function(parameters){
 		// AR backend - ['artoolkit', 'aruco', 'tango']
 		trackingBackend: 'artoolkit',
 		// debug - true if one should display artoolkit debug canvas, false otherwise
-		debug: true,
+		debug: false,
 		// the mode of detection - ['color', 'color_and_matrix', 'mono', 'mono_and_matrix']
 		detectionMode: 'mono',
 		// type of matrix code - valid iif detectionMode end with 'matrix' - [3x3, 3x3_HAMMING63, 3x3_PARITY65, 4x4, 4x4_BCH_13_9_3, 4x4_BCH_13_5_5]
