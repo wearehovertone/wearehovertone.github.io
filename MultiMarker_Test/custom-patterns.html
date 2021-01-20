@@ -113,7 +113,7 @@ function initialize()
 	for (let i = 0; i < 3; i++)
 	{
 		let loader = new THREE.TextureLoader();
-		let texture = loader.load( "images/" + textureArray[i] + ".png" )
+		let texture = loader.load( "images/" + textureArray[i] + ".PNG" )
 		let markerRoot = new THREE.Group();
 		scene.add(markerRoot);
 		let markerControls = new THREEx.ArMarkerControls(arToolkitContext, markerRoot, {
