@@ -112,6 +112,7 @@ function initialize()
 	//let colorArray   = [0xff0000, 0xcc00ff, 0xcccccc];
 	for (let i = 0; i < 3; i++)
 	{
+		let loader = new THREE.TextureLoader();
 		let texture = loader.load( "images/" + textureArray[i] + ".png" )
 		let markerRoot = new THREE.Group();
 		scene.add(markerRoot);
