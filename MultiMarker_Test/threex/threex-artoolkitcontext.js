@@ -29,9 +29,9 @@ ARjs.Context = THREEx.ArToolkitContext = function(parameters){
 		// the patternRatio inside the artoolkit marker - artoolkit only
 		patternRatio: 0.5,
 
-		// enable image smoothing or not for canvas copy - default to true
+		// enable image smoothing or not for canvas copy - default to false
 		// https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/imageSmoothingEnabled
-		imageSmoothingEnabled : false,
+		imageSmoothingEnabled : true,
 	}
 	// parameters sanity check
 	console.assert(['artoolkit', 'aruco', 'tango'].indexOf(this.parameters.trackingBackend) !== -1, 'invalid parameter trackingBackend', this.parameters.trackingBackend)
