@@ -2,12 +2,14 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="./styles.css">
 <title>Welcome - AR</title>
+</head>
 <body>
 <script type="text/javascript">
 
     for (let i = 1; i < 9; i++) {
-        const myImage = new Image();
+        const myImage = new Image(800);
         myImage.src = './9001/9001_00'+i+'.jpg';
         document.body.appendChild(myImage);
         document.body.appendChild(document.createElement("br"));
@@ -15,7 +17,7 @@
     }
     
     for (let i = 1; i < 7; i++) {
-        const myImage = new Image();
+        const myImage = new Image(800);
         myImage.src = './9002/9002_00'+i+'.jpg';
         document.body.appendChild(myImage);
         document.body.appendChild(document.createElement("br"));
@@ -23,7 +25,7 @@
     }
     
     for (let i = 1; i < 7; i++) {
-        const myImage = new Image();
+        const myImage = new Image(800);
         myImage.src = './9003/9003_00'+i+'.jpg';
         document.body.appendChild(myImage);
         document.body.appendChild(document.createElement("br"));
@@ -31,7 +33,7 @@
     }
     
     for (let i = 1; i < 7; i++) {
-        const myImage = new Image();
+        const myImage = new Image(800);
         myImage.src = './9007/9007_00'+i+'.jpg';
         document.body.appendChild(myImage);
         document.body.appendChild(document.createElement("br"));
@@ -39,20 +41,38 @@
     }
     
     for (let i = 1; i < 7; i++) {
-        const myImage = new Image();
+        const myImage = new Image(800);
         myImage.src = './9013/9013_00'+i+'.jpg';
         document.body.appendChild(myImage);
         document.body.appendChild(document.createElement("br"));
         //text += cars[i] + "<br>";
     }
     
-    for (let i = 1; i < 7; i++) {
-        const myImage = new Image();
-        myImage.src = './ext/900'+i+'_ext.jpg';
-        document.body.appendChild(myImage);
-        document.body.appendChild(document.createElement("br"));
-        //text += cars[i] + "<br>";
-    }
+    const myImageExt1 = new Image(800);
+    myImageExt1.src = './ext/9001_ext.jpg';
+    document.body.appendChild(myImageExt1);
+    document.body.appendChild(document.createElement("br"));
+
+    const myImageExt2 = new Image(800);
+    myImageExt2.src = './ext/9002_ext.jpg';
+    document.body.appendChild(myImageExt2);
+    document.body.appendChild(document.createElement("br"));
+
+    const myImageExt3 = new Image(800);
+    myImageExt3.src = './ext/9003_ext.jpg';
+    document.body.appendChild(myImageExt3);
+    document.body.appendChild(document.createElement("br"));
+
+    const myImageExt7 = new Image(800);
+    myImageExt7.src = './ext/9007_ext.jpg';
+    document.body.appendChild(myImageExt7);
+    document.body.appendChild(document.createElement("br"));
+
+    const myImageExt13 = new Image(800);
+    myImageExt13.src = './ext/9013_ext.jpg';
+    document.body.appendChild(myImageExt13);
+    document.body.appendChild(document.createElement("br"));
+        
     
 </script>
 </body>
