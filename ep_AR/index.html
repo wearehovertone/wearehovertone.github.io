@@ -6,7 +6,15 @@
 
 <script type="text/javascript">
 
-    if( ( navigator.userAgent.match( /iPhone/i ) ) || ( navigator.userAgent.match( /iPod/i ) ) || ( navigator.userAgent.match( /iPad/i ) ) ) {
+    for (let i = 1; i =< 8; i++) {
+        const myImage = new Image();
+        myImage.src = '9001/9001_00'+i+'.jpg';
+        document.body.appendChild(myImage);
+        //text += cars[i] + "<br>";
+    }
+        
+
+    /*if( ( navigator.userAgent.match( /iPhone/i ) ) || ( navigator.userAgent.match( /iPod/i ) ) || ( navigator.userAgent.match( /iPad/i ) ) ) {
 
         window.location = "https://apps.apple.com/be/app/instagram/id389801252?l=fr";
 
@@ -17,7 +25,7 @@
     } else {
 
         window.location = "https://www.hovertone.com";
-    }
+    }*/
  
 </script>
 </body>
