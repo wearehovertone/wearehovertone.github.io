@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="./styles.css">
+    <title>Welcome - AR</title>
+</head>
+
+<body>
+    <script type="text/javascript">
+
+        const myImageP01 = new Image(800);
+        myImageP01.src = './marker_ar/Image00.png';
+        document.body.appendChild(myImageP01);
+        document.body.appendChild(document.createElement("br"));
+
+        for (let i = 1; i < 8; i++) {
+            const myImage = new Image(800);
+            myImage.src = './marker_ar/Image' + i + '.png';
+            document.body.appendChild(myImage);
+            document.body.appendChild(document.createElement("br"));
+        }
+
+    </script>
+</body>
+
+</html>
